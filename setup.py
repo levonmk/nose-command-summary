@@ -10,7 +10,7 @@ else:
 version = str_version
 
 setup(
-    name='command_summary',
+    name='nose_command_summary',
     version=version,
     description="A python nose plugin to print a summary of the commands to run failing tests.",
     long_description="A python nose plugin to print the commands necessary to rerun just the failing/erroring tests at the end of the printout.",
@@ -26,7 +26,7 @@ setup(
     py_modules=['nose_timer'],
     entry_points={
         'nose.plugins.0.10': [
-            'command_summary = command_summary:CommandSummary',
+            'nose_command_summary = nose_command_summary:CommandSummary',
         ]
     },
 )

@@ -6,7 +6,7 @@ class CommandSummary(Plugin):
     """
     Will print the commands necessary to rerun just the failing/erroring tests at end of printout.
     """
-    name = 'command_summary'
+    name = 'command-summary'
     enabled = False
 
     def options(self, parser, env=os.environ):
