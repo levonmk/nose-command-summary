@@ -1,14 +1,12 @@
-import logging
 import os
 from nose.plugins import Plugin
 
-log = logging.getLogger('nose.plugins.command-summary')
 
 class CommandSummary(Plugin):
     """
     Will print the commands necessary to rerun just the failing/erroring tests at end of printout.
     """
-    name = 'command-summary'
+    name = 'command_summary'
     enabled = False
 
     def options(self, parser, env=os.environ):
