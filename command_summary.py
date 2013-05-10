@@ -20,10 +20,16 @@ class CommandSummary(Plugin):
         self._fail_command_summary = []
 
     def addError(self, test, err):
-        self._error_command_summary.append(test.address())
+        test_address = ''
+        for part in test.address():
+            test_address = ''.join((test_address,str(part)))
+        self._error_command_summary.append(test_address)
 
     def addFailure(self, test, err):
-        self._fail_command_summary.append(test.address())
+        test_address = ''
+        for part in test.address():
+            test_address = ''.join((test_address,str(part)))
+        self._fail_command_summary.append(test_address)
 
     def report(self, stream):
         if not self.enabled:
