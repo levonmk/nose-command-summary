@@ -20,15 +20,11 @@ class CommandSummary(Plugin):
         self._fail_command_summary = []
 
     def addError(self, test, err):
-        test_address = ''
-        for part in test.address():
-            test_address = ' '.join((test_address,str(part)))
+        test_address = "%s:%s" % (test.address()[1],test.address()[2])
         self._error_command_summary.append(test_address)
 
     def addFailure(self, test, err):
-        test_address = ''
-        for part in test.address():
-            test_address = ' '.join((test_address,str(part)))
+        test_address = "%s:%s" % (test.address()[1],test.address()[2])
         self._fail_command_summary.append(test_address)
 
     def report(self, stream):
