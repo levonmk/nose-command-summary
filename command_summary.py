@@ -28,10 +28,12 @@ class CommandSummary(Plugin):
     def report(self, stream):
         if not self.enabled:
             return
-        stream.writeln("Commands for tests with errors:")
+        if len(self._error_command_summary)>0:
+            stream.writeln("Commands for tests with errors:")
         for test_command in self._error_command_summary:
             stream.writeln(test_command)
-        stream.writeln("Commands for tests with failed assertions:")
+        if len(self._fail_command_summary)>0:
+            stream.writeln("Commands for tests with failed assertions:")
         for test_command in self._fail_command_summary:
             stream.writeln(test_command)
 
