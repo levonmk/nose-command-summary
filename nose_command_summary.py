@@ -16,16 +16,17 @@ class CommandSummary(Plugin):
         super(CommandSummary, self).configure(options, conf)
         if not self.enabled:
             return
+        self._test_command_prefix = "python manage.py test"
         self._error_command_summary = []
         self._fail_command_summary = []
 
     def addError(self, test, err):
-        test_address = "%s:%s" % (test.address()[1],test.address()[2])
-        self._error_command_summary.append(test_address)
+        test_command = "%s %s:%s" % (self._test_command_prefix,test.address()[1],test.address()[2])
+        self._error_command_summary.append(test_command)
 
     def addFailure(self, test, err):
-        test_address = "%s:%s" % (test.address()[1],test.address()[2])
-        self._fail_command_summary.append(test_address)
+        test_command = "%s %s:%s" % (self._test_command_prefix,test.address()[1],test.address()[2])
+        self._fail_command_summary.append(test_command)
 
     def report(self, stream):
         if not self.enabled:
